@@ -278,7 +278,7 @@
                      "Default":"",
                      "Type":"string",
                      "Location": "pathReplace",
-                     "Description":"The _id key of the app"
+                     "Description":"The clientId of the app"
                   },
                   {
                      "Name":"secretKey",
@@ -311,6 +311,31 @@
                      "Type":"string",
                      "Location": "body",
                      "Description":"A list of comma-separated tags associated with the application"
+                  }  
+               ]
+            },
+            {
+               "MethodName":"./path/log_get.js -> qlog.log.getByApp",
+               "Synopsis":"Gets the logs from application",
+               "HTTPMethod":"GET",
+               "URI":"/app/:appId/log",
+               "RequiresOAuth":"N",
+               "parameters":[
+                  {
+                     "Name":"appId",
+                     "Required":"Y",
+                     "Default":"",
+                     "Type":"string",
+                     "Location": "pathReplace",
+                     "Description":"The clientId of the app"
+                  },                  
+                  {
+                     "Name":"Cookie",
+                     "Required":"Y",
+                     "Default":"pastry.sid=d416fc67-07c6-406b-a393-c86fd54ee361",
+                     "Type":"string",
+                     "Location": "header",
+                     "Description":"The pastry.sid of the connected user"
                   }  
                ]
             }
