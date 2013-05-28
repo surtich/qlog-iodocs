@@ -1,0 +1,9 @@
+{
+    "qlog": {
+        "name": "QLog API",
+        "protocol": "http",
+        "baseURL": "localhost:5000",
+        "publicPath": "",
+        "headers" : {}
+    }
+}

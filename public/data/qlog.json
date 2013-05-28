@@ -1,0 +1,320 @@
+{
+   "endpoints":[
+      {
+         "name":"Sign methods",
+         "methods":[
+            {
+               "MethodName":"./path/signin_post.js -> qlog.user.getByEmailAndPwd",
+               "Synopsis":"Connects an user to QLog",
+               "HTTPMethod":"POST",
+               "URI":"/signin",
+               "RequiresOAuth":"N",
+               "parameters":[
+                  {
+                     "Name":"e",
+                     "Required":"Y",
+                     "Default":"",
+                     "Type":"string",
+                     "Location": "body",
+                     "Description":"user email"
+                  },
+                  {
+                     "Name":"p",
+                     "Required":"Y",
+                     "Type":"string",
+                     "Location": "body",
+                     "Description":"user password"
+                  }
+               ]
+            },
+            {
+               "MethodName":"./path/signout_post.js -> req.pastry.invalidate",
+               "Synopsis":"Disconnects an user from QLog",
+               "HTTPMethod":"POST",
+               "URI":"/signout",
+               "RequiresOAuth":"N",
+               "parameters":[]
+            }
+         ]
+      },
+      {
+         "name":"User methods",
+         "methods":[
+            {
+               "MethodName":"./path/user_get.js -> qlog.user.getUsers",
+               "Synopsis":"Gets all users from QLog",
+               "HTTPMethod":"GET",
+               "URI":"/user",
+               "RequiresOAuth":"N",
+               "parameters":[
+                  {
+                     "Name":"Cookie",
+                     "Required":"Y",
+                     "Default":"pastry.sid=d416fc67-07c6-406b-a393-c86fd54ee361",
+                     "Type":"string",
+                     "Location": "header",
+                     "Description":"The pastry.sid of the connected admin user"
+                  }
+               ]
+            },
+            {
+               "MethodName":"./path/signup_post.js -> qlog.user.signup",
+               "Synopsis":"Creates a new QLog user",
+               "HTTPMethod":"POST",
+               "URI":"/signup",
+               "RequiresOAuth":"N",
+               "parameters":[
+                  {
+                     "Name":"e",
+                     "Required":"Y",
+                     "Default":"",
+                     "Type":"string",
+                     "Location": "body",
+                     "Description":"user email"
+                  },
+                  {
+                     "Name":"p",
+                     "Required":"Y",
+                     "Type":"string",
+                     "Location": "body",
+                     "Description":"user password"
+                  }
+               ]
+            },
+            {
+               "MethodName":"./path/user_me_get.js -> qlog.user.getUserById",
+               "Synopsis":"Gets the information of the connected user",
+               "HTTPMethod":"GET",
+               "URI":"/user/me",
+               "RequiresOAuth":"N",
+               "parameters":[
+                  {
+                     "Name":"Cookie",
+                     "Required":"Y",
+                     "Default":"pastry.sid=d416fc67-07c6-406b-a393-c86fd54ee361",
+                     "Type":"string",
+                     "Location": "header",
+                     "Description":"The pastry.sid of the connected user"
+                  }
+               ]
+            }
+         ]
+      },
+      {
+         "name":"App methods",
+         "methods":[
+            {
+               "MethodName":"./path/app_get.js -> qlog.app.getByUser",
+               "Synopsis":"Gets all apps from an user",
+               "HTTPMethod":"GET",
+               "URI":"/app",
+               "RequiresOAuth":"N",
+               "parameters":[
+                  {
+                     "Name":"Cookie",
+                     "Required":"Y",
+                     "Default":"pastry.sid=d416fc67-07c6-406b-a393-c86fd54ee361",
+                     "Type":"string",
+                     "Location": "header",
+                     "Description":"The pastry.sid of the connected user"
+                  }
+               ]
+            },
+            {
+               "MethodName":"./path/app_details_get.js -> qlog.app.getById",
+               "Synopsis":"Gets an app from its _id",
+               "HTTPMethod":"GET",
+               "URI":"/app/:appId",
+               "RequiresOAuth":"N",
+               "parameters":[
+                  {
+                     "Name":"appId",
+                     "Required":"Y",
+                     "Default":"",
+                     "Type":"string",
+                     "Location": "pathReplace",
+                     "Description":"The _id key of the app"
+                  }
+               ]
+            },
+            {
+               "MethodName":"./path/app_put.js -> qlog.app.create",
+               "Synopsis":"Creates a new app",
+               "HTTPMethod":"PUT",
+               "URI":"/app",
+               "RequiresOAuth":"N",
+               "parameters":[
+                  {
+                     "Name":"n",
+                     "Required":"Y",
+                     "Default":"",
+                     "Type":"string",
+                     "Location": "body",
+                     "Description":"Application Name"
+                  },
+                  {
+                     "Name":"cb",
+                     "Required":"Y",
+                     "Type":"string",
+                     "Location": "body",
+                     "Description":"Callback Url"
+                  },
+                  {
+                     "Name":"Cookie",
+                     "Required":"Y",
+                     "Default":"pastry.sid=d416fc67-07c6-406b-a393-c86fd54ee361",
+                     "Type":"string",
+                     "Location": "header",
+                     "Description":"The pastry.sid of the connected user"
+                  }
+               ]
+            },
+            {
+               "MethodName":"./path/app_post.js -> qlog.app.update",
+               "Synopsis":"Updates an app",
+               "HTTPMethod":"POST",
+               "URI":"/app/:appId",
+               "RequiresOAuth":"N",
+               "parameters":[
+                  {
+                     "Name":"appId",
+                     "Required":"Y",
+                     "Default":"",
+                     "Type":"string",
+                     "Location": "pathReplace",
+                     "Description":"The _id key of the app"
+                  },
+                  {
+                     "Name":"n",
+                     "Required":"Y",
+                     "Default":"",
+                     "Type":"string",
+                     "Location": "body",
+                     "Description":"New application Name (empty for no changes)"
+                  },
+                  {
+                     "Name":"cb",
+                     "Required":"Y",
+                     "Type":"string",
+                     "Location": "body",
+                     "Description":"New callback Url (empty for no changes)"
+                  }
+               ]
+            },
+            {
+               "MethodName":"./path/app_secretkey_post.js -> qlog.app.refreshSecretKey",
+               "Synopsis":"Renews the secretKey",
+               "HTTPMethod":"POST",
+               "URI":"/app/:appId/resetkey",
+               "RequiresOAuth":"N",
+               "parameters":[
+                  {
+                     "Name":"appId",
+                     "Required":"Y",
+                     "Default":"",
+                     "Type":"string",
+                     "Location": "pathReplace",
+                     "Description":"The _id key of the app"
+                  }
+               ]
+            },
+            {
+               "MethodName":"./path/app_delete.js -> qlog.app.erase",
+               "Synopsis":"Delete an app",
+               "HTTPMethod":"DELETE",
+               "URI":"/app/:appId",
+               "RequiresOAuth":"N",
+               "parameters":[
+                  {
+                     "Name":"appId",
+                     "Required":"Y",
+                     "Default":"",
+                     "Type":"string",
+                     "Location": "pathReplace",
+                     "Description":"The _id key of the app"
+                  }
+               ]
+            },
+            {
+               "MethodName":"./path/app_credential_post.js -> qlog.app.getByClientId",
+               "Synopsis":"Returns the RabbitMQ URL and the exchange and the exchange identifier of the app",
+               "HTTPMethod":"POST",
+               "URI":"/app/:appId/getcredential",
+               "RequiresOAuth":"N",
+               "parameters":[
+                  {
+                     "Name":"appId",
+                     "Required":"Y",
+                     "Default":"",
+                     "Type":"string",
+                     "Location": "pathReplace",
+                     "Description":"The clientId of the app"
+                  },
+                  {
+                     "Name":"p",
+                     "Required":"Y",
+                     "Default":"",
+                     "Type":"string",
+                     "Location": "body",
+                     "Description":"The secretKey of the app"
+                  }
+               ]
+            }
+         ]
+      },
+      {
+         "name":"Logs methods",
+         "methods":[            
+            {
+               "MethodName":"./path/log_put.js -> qlog.log.create",
+               "Synopsis":"Adds a log to an application",
+               "HTTPMethod":"PUT",
+               "URI":"/app/:appId/log",
+               "RequiresOAuth":"N",
+               "parameters":[
+                  {
+                     "Name":"appId",
+                     "Required":"Y",
+                     "Default":"",
+                     "Type":"string",
+                     "Location": "pathReplace",
+                     "Description":"The _id key of the app"
+                  },
+                  {
+                     "Name":"secretKey",
+                     "Required":"Y",
+                     "Default":"",
+                     "Type":"string",
+                     "Location": "body",
+                     "Description":"The secretKey of the app"
+                  },
+                  {
+                     "Name":"msg",
+                     "Required":"Y",
+                     "Default":"",
+                     "Type":"string",
+                     "Location": "body",
+                     "Description":"The log message"
+                  },
+                  {
+                     "Name":"time",
+                     "Required":"N",
+                     "Default":"",
+                     "Type":"string",
+                     "Location": "body",
+                     "Description":"The date/time when the record was created"
+                  },
+                  {
+                     "Name":"tags",
+                     "Required":"N",
+                     "Default":"",
+                     "Type":"string",
+                     "Location": "body",
+                     "Description":"A list of comma-separated tags associated with the application"
+                  }  
+               ]
+            }
+         ]
+      }
+   ]
+}
