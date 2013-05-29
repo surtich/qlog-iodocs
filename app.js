@@ -82,7 +82,7 @@ try {
 
 var restruc = new Restruc(config, apisConfig);
 
-console.log ("restruc",restruc);
+//console.log ("restruc",restruc);
 
 
 var app = module.exports = express.createServer();
