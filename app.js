@@ -34,7 +34,9 @@ var express     = require('express'),
     https       = require('https'),
     crypto      = require('crypto'),
     redis       = require('redis'),
-    RedisStore  = require('connect-redis')(express);
+    RedisStore  = require('connect-redis')(express),
+    Restruc    = require('./restruc').Restruc;
+
 
 // Configuration
 try {
@@ -43,7 +45,6 @@ try {
     console.error("File config.json not found or is invalid.  Try: `cp config.json.sample config.json`");
     process.exit(1);
 }
-
 //
 // Redis connection
 //
@@ -78,6 +79,11 @@ try {
     console.error("File apiconfig.json not found or is invalid.");
     process.exit(1);
 }
+
+var restruc = new Restruc(config, apisConfig);
+
+console.log ("restruc",restruc);
+
 
 var app = module.exports = express.createServer();
 
