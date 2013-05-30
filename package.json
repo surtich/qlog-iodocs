@@ -27,7 +27,8 @@
     "oauth": "0.9.3",
     "redis": ">= 0.7.0",
     "querystring": "0.1.0",
-    "clone": "*"
+    "clone": "*",
+    "js-beautify": "*"
   },
   "devDependencies": {},
   "main": "index",

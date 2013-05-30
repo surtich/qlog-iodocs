@@ -472,7 +472,7 @@ function processRequest(req, res, next) {
                         req.resultHeaders = req.resultHeaders || 'None';
                     }
 
-                    req.call = url.parse(options.host + (options.port ? ":" + options.port : "") + options.path);
+                    req.call = url.parse(options.protocol + "//" + options.host + (options.port ? ":" + options.port : "") + options.path);
                     req.call = url.format(req.call);
 
                     // Response body
@@ -622,7 +622,7 @@ function processRequest(req, res, next) {
 
                 // Set Headers and Call
                 req.resultHeaders = response.headers;
-                req.call = url.parse(options.host + (options.port ? ":" + options.port : "") + options.path);
+                req.call = url.parse(options.protocol + "//" + options.host + (options.port ? ":" + options.port : "") + options.path);
                 req.call = url.format(req.call);
 
                 // Response body

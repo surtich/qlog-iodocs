@@ -1,11 +1,12 @@
 {
    "endpoints":[
       {
-         "name":"Sign methods",
+         "name":"Sign",
          "methods":[
             {
                "MethodName":"./path/signin_post.js -> qlog.user.getByEmailAndPwd",
                "require": "signin_post.js",
+               "APIMethod" : "qlog.user.getByEmailAndPwd",
                "Synopsis":"Connects an user to QLog",
                "HTTPMethod":"POST",
                "URI":"/signin",
@@ -31,6 +32,7 @@
             {
                "MethodName":"./path/signout_post.js -> req.pastry.invalidate",
                "require": "signout_post.js",
+               "APIMethod" : "req.pastry.invalidate",
                "Synopsis":"Disconnects an user from QLog",
                "HTTPMethod":"POST",
                "URI":"/signout",
@@ -40,11 +42,12 @@
          ]
       },
       {
-         "name":"User methods",
+         "name":"User",
          "methods":[
             {
                "MethodName":"./path/user_get.js -> qlog.user.getUsers",
                "require": "user_get.js",
+               "APIMethod" : "qlog.user.getUsers",
                "Synopsis":"Gets all users from QLog",
                "HTTPMethod":"GET",
                "URI":"/user",
@@ -63,6 +66,7 @@
             {
                "MethodName":"./path/signup_post.js -> qlog.user.signup",
                "require": "signup_post.js",
+               "APIMethod" : "qlog.user.signup",
                "Synopsis":"Creates a new QLog user",
                "HTTPMethod":"POST",
                "URI":"/signup",
@@ -88,6 +92,7 @@
             {
                "MethodName":"./path/user_me_get.js -> qlog.user.getUserById",
                "require": "user_me_get.js",
+               "APIMethod" : "qlog.user.getUserById",
                "Synopsis":"Gets the information of the connected user",
                "HTTPMethod":"GET",
                "URI":"/user/me",
@@ -106,11 +111,13 @@
          ]
       },
       {
-         "name":"App methods",
+         "name":"App",
          "methods":[
             {
                "MethodName":"./path/app_get.js -> qlog.app.getByUser",
                "require": "app_get.js",
+               "APIMethod" : "qlog.app.getByUser",
+               "APIParams" : "req.pastry.data.uid",
                "Synopsis":"Gets all apps from an user",
                "HTTPMethod":"GET",
                "URI":"/app",
@@ -129,6 +136,7 @@
             {
                "MethodName":"./path/app_details_get.js -> qlog.app.getById",
                "require": "app_details_get.js",
+               "APIMethod" : "qlog.app.getById",
                "Synopsis":"Gets an app from its _id",
                "HTTPMethod":"GET",
                "URI":"/app/:appId",
@@ -147,6 +155,7 @@
             {
                "MethodName":"./path/app_put.js -> qlog.app.create",
                "require": "app_put.js",
+               "APIMethod" : "qlog.app.create",
                "Synopsis":"Creates a new app",
                "HTTPMethod":"PUT",
                "URI":"/app",
@@ -180,6 +189,7 @@
             {
                "MethodName":"./path/app_post.js -> qlog.app.update",
                "require": "app_post.js",
+               "APIMethod" : "qlog.app.update",
                "Synopsis":"Updates an app",
                "HTTPMethod":"POST",
                "URI":"/app/:appId",
@@ -213,6 +223,7 @@
             {
                "MethodName":"./path/app_secretkey_post.js -> qlog.app.refreshSecretKey",
                "require": "app_secretkey_post.js",
+               "APIMethod" : "qlog.app.refreshSecretKey",
                "Synopsis":"Renews the secretKey",
                "HTTPMethod":"POST",
                "URI":"/app/:appId/resetkey",
@@ -231,6 +242,7 @@
             {
                "MethodName":"./path/app_delete.js -> qlog.app.erase",
                "require": "app_delete.js",
+               "APIMethod" : "qlog.app.erase",
                "Synopsis":"Delete an app",
                "HTTPMethod":"DELETE",
                "URI":"/app/:appId",
@@ -249,6 +261,7 @@
             {
                "MethodName":"./path/app_credential_post.js -> qlog.app.getByClientId",
                "require": "app_credential_post.js",
+               "APIMethod" : "qlog.app.getByClientId",
                "Synopsis":"Returns the RabbitMQ URL and the exchange and the exchange identifier of the app",
                "HTTPMethod":"POST",
                "URI":"/app/:appId/getcredential",
@@ -275,11 +288,12 @@
          ]
       },
       {
-         "name":"Logs methods",
+         "name":"Logs",
          "methods":[            
             {
                "MethodName":"./path/log_put.js -> qlog.log.create",
                "require": "log_put.js",
+               "APIMethod" : "qlog.log.create",
                "Synopsis":"Adds a log to an application",
                "HTTPMethod":"PUT",
                "URI":"/app/:appId/log",
@@ -330,6 +344,7 @@
             {
                "MethodName":"./path/log_get.js -> qlog.log.getByApp",
                "require": "log_get.js",
+               "APIMethod" : "qlog.log.getByApp",
                "Synopsis":"Gets the logs from application",
                "HTTPMethod":"GET",
                "URI":"/app/:appId/log",
